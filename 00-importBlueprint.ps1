@@ -8,10 +8,6 @@ param(
 )
 
 Install-Module -Name Az.Blueprint -AllowClobber -Force
-if (!(Get-Module "Az.Blueprint")) {
-    throw "Module Az.Blueprint was not downloaded"
-    exit 1
-}
 
 $securePass = ConvertTo-SecureString $spnPass -AsPlainText -Force
 $credential = New-Object -TypeName pscredential -ArgumentList $spnId, $securePass
