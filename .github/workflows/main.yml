@@ -9,13 +9,13 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
+      env:
+        SUBSCRIPTIONID: fa971420-4388-457a-ac56-1cd453785f14
+        BLUEPRINTPATH: ./infrastructure
+        BLUEPRINTNAME: testBluePrint
+        SPNID: 529a5a8d-4dc4-4f1a-9d4f-3ba5f130446f
+        SPNPASS: ${{ secrets.spnPass }}
+        TENANTID: eb73c9bc-7f90-4841-9556-c3a56cc82c79
     - name: Import the blueprint
-      with:
-        subscriptionId: fa971420-4388-457a-ac56-1cd453785f14
-        blueprintPath: ./infrastructure
-        blueprintName: testBluePrint
-        spnId: 529a5a8d-4dc4-4f1a-9d4f-3ba5f130446f
-        spnPass: ${{ secrets.spnPass }}
-        tenantId: eb73c9bc-7f90-4841-9556-c3a56cc82c79
-      run: ./00-importBlueprint.ps1 -subscriptionId $INPUT_SUBSCRIPTIONID -blueprintPath $INPUT_BLUEPRINTPATH -blueprintName $INPUT_BLUEPRINTNAME -spnId $INPUT_SPNID -spnPass $INPUT_SPNPASS -tenantId $INPUT_TENANTID
+      run: ./00-importBlueprint.ps1 -subscriptionId $SUBSCRIPTIONID -blueprintPath $BLUEPRINTPATH -blueprintName $BLUEPRINTNAME -spnId $SPNID -spnPass $SPNPASS -tenantId $TENANTID
       shell: pwsh
