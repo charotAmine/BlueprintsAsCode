@@ -19,5 +19,5 @@ gci "$blueprintPath/blueprint.json"| Where-Object{
     $NewFullName = join-path $_.directory -child $NewName
     $_.MoveTo($NewFullName)
 }
-
+ls $blueprintPath
 Import-AzBlueprintWithArtifact -Name $blueprintName -SubscriptionId $subscriptionId -InputPath $blueprintPath -Force
