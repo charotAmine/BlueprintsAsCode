@@ -17,5 +17,5 @@ jobs:
         spnPass: ${{ secrets.spnPass }}
         tenantId: eb73c9bc-7f90-4841-9556-c3a56cc82c79
     - name: Import the blueprint
-      run: ./00-importBlueprint.ps1 -subscriptionId INPUT_SUBSCRIPTIONID -blueprintPath INPUT_BLUEPRINTPATH -blueprintName INPUT_BLUEPRINTNAME -spnId INPUT_SPNID -spnPass INPUT_SPNPASS -tenantId INPUT_TENANTID
+      run: ./00-importBlueprint.ps1 -subscriptionId ${{ INPUT_SUBSCRIPTIONID }} -blueprintPath ${{ INPUT_BLUEPRINTPATH }} -blueprintName ${{ INPUT_BLUEPRINTNAME }} -spnId ${{ INPUT_SPNID }} -spnPass ${{ INPUT_SPNPASS }} -tenantId ${{ INPUT_TENANTID }}
       shell: pwsh
