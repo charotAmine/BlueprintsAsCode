@@ -7,6 +7,7 @@ param(
     [string]$tenantId
 )
 
+Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 Install-Module -Name Az.Blueprint -AllowClobber
 if (!(Get-Module "Az.Blueprint")) {
     throw "Module Az.Blueprint was not downloaded"
