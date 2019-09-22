@@ -9,6 +9,7 @@ param(
 
 Install-Module -Name Az.Blueprint -AllowClobber -Force
 
+write-output "Subscription : $subscriptionId"
 $securePass = ConvertTo-SecureString $spnPass -AsPlainText -Force
 $credential = New-Object -TypeName pscredential -ArgumentList $spnId, $securePass
 Login-AzAccount -Credential $credential -ServicePrincipal -TenantId $tenantId
