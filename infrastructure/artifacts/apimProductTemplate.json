@@ -1,0 +1,38 @@
+{
+    "kind": "template",
+    "properties": {
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "APIManagementInstanceName": {
+              "type": "string",
+              "defaultValue": "apimanagementcharot"
+            }
+        },
+        "variables": {},
+        "resources": [ 
+            {
+                "type": "Microsoft.ApiManagement/service/products",
+                "name": "[concat(parameters('APIManagementInstanceName'), '/testAmine')]",
+                "apiVersion": "2017-03-01",
+                "scale": null,
+                "properties": {
+                    "displayName": "testAmine",
+                    "description": "used for the article",
+                    "subscriptionRequired": true,
+                    "approvalRequired": true,
+                    "state": "published"
+                },
+                "dependsOn": []
+            } 
+        ]
+    },
+      "resourceGroup": "apimRG",
+      "displayName": "Product template",
+      "dependsOn": ["apimTemplate"],
+      "parameters":{}
+    },
+    "type": "Microsoft.Blueprint/blueprints/artifacts",
+    "name": "API Management template"
+  }

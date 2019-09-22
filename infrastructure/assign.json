@@ -1,0 +1,23 @@
+{
+    "identity": {
+        "type": "SystemAssigned"
+    },
+    "location": "westeurope",
+    "properties": {
+        "blueprintId": "",
+        "resourceGroups": {
+            "apimRG": {
+                "name": "artsbxwe-apim-rg",
+                "location": "westeurope"
+            }
+        },
+        "locks": {
+            "mode": "none"
+        },
+        "parameters": {
+            "spnRuntimeIdParameter": {
+                "type": "string"
+            }
+        }
+    }
+}

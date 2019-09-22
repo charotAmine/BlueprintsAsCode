@@ -1,0 +1,16 @@
+{
+    "properties": {
+        "targetScope": "subscription",
+        "parameters": { 
+            "spnRuntimeIdParameter": {
+                "type": "string"
+            }
+        },
+        "resourceGroups": {
+            "apimRG": {
+                "description": "This resource group will be used for API Management"
+            }
+        }
+    },
+    "type": "Microsoft.Blueprint/blueprints" 
+}
