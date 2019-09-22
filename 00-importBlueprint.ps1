@@ -1,5 +1,5 @@
 param(
-    [string]$subscriptionId,
+    [string]$subscriptionId = $env:SUBSCRIPTIONID,
     [string]$blueprintPath,
     [string]$blueprintName,
     [string]$spnId,

@@ -17,5 +17,5 @@ jobs:
         SPNID: 529a5a8d-4dc4-4f1a-9d4f-3ba5f130446f
         SPNPASS: ${{ secrets.spnPass }}
         TENANTID: eb73c9bc-7f90-4841-9556-c3a56cc82c79
-      run: ./00-importBlueprint.ps1 -subscriptionId $SUBSCRIPTIONID -blueprintPath $BLUEPRINTPATH -blueprintName $BLUEPRINTNAME -spnId $SPNID -spnPass $SPNPASS -tenantId $TENANTID
+      run: ./00-importBlueprint.ps1
       shell: pwsh
