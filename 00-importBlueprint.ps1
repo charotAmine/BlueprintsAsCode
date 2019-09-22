@@ -1,10 +1,10 @@
 param(
     [string]$subscriptionId = $env:SUBSCRIPTIONID,
-    [string]$blueprintPath,
-    [string]$blueprintName,
-    [string]$spnId,
-    [string]$spnPass,
-    [string]$tenantId
+    [string]$blueprintPath = $env:BLUEPRINTPATH,
+    [string]$blueprintName = $env:BLUEPRINTNAME,
+    [string]$spnId = $env:SPNID,
+    [string]$spnPass = $env:SPNPASS,
+    [string]$tenantId = $env:TENANTID
 )
 
 Install-Module -Name Az.Blueprint -AllowClobber -Force
