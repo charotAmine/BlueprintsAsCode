@@ -14,5 +14,5 @@ $securePass = ConvertTo-SecureString $spnPass -AsPlainText -Force
 $credential = New-Object -TypeName pscredential -ArgumentList $spnId, $securePass
 Login-AzAccount -Credential $credential -ServicePrincipal -TenantId $tenantId
 
- gci "./infrastructure/blueprint.json" | Rename-Item -NewName {"$($text.ToTitleCase($_.BaseName.ToLower()))$($_.Extension)"}
+gci "$blueprintPath/blueprint.json" | Rename-Item -NewName {"$($text.ToTitleCase($_.BaseName.ToLower()))$($_.Extension)"}
 Import-AzBlueprintWithArtifact -Name $blueprintName -SubscriptionId $subscriptionId -InputPath $blueprintPath -Force
