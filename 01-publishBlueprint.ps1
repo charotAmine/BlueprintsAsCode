@@ -16,7 +16,7 @@ $createdBlueprint = Get-AzBlueprint -SubscriptionId $subscriptionId -Name $bluep
 
 if($createdBlueprint)
 {
-    Publish-AzBlueprint -Blueprint $createdBlueprint -Version "1.0.0"
+    Publish-AzBlueprint -Blueprint $createdBlueprint -Version "2.0.0"
 }else
 {
     throw "Could not get Blueprint"
