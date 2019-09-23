@@ -32,7 +32,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Publish the blueprint
+    - name: Publish the blueprint
       env:
         SUBSCRIPTIONID: fa971420-4388-457a-ac56-1cd453785f14
         ASSIGNMENTFILE: ./infrastructure/assign.json
