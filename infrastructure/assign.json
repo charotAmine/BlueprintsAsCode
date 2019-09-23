@@ -16,7 +16,7 @@
         },
         "parameters": {
             "spnRuntimeIdParameter": {
-                "type": "string"
+                "value": "1b43e8b8-5a8a-4a39-8697-f85138e02d29"
             }
         }
     }
