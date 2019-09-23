@@ -8,7 +8,13 @@ param(
     [string]$version = $env:VERSION
 )
 
-write-output "Subscription : $subscriptionId"
+Install-Module -Name Az.Blueprint -AllowClobber -Force
+
+if (!(Get-Module -ListAvailable -Name Az.Blueprint)) {
+    throw "Module does not exist"
+    exit 1 
+} 
+
 $securePass = ConvertTo-SecureString $spnPass -AsPlainText -Force
 $credential = New-Object -TypeName pscredential -ArgumentList $spnId, $securePass
 Login-AzAccount -Credential $credential -ServicePrincipal -TenantId $tenantId
