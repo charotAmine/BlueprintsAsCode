@@ -21,4 +21,10 @@ Login-AzAccount -Credential $credential -ServicePrincipal -TenantId $tenantId
 
 $text = [System.Threading.Thread]::CurrentThread.CurrentCulture.TextInfo
 gci "$blueprintPath/blueprint.json" | Rename-Item -NewName {"$($text.ToTitleCase($_.BaseName.ToLower()))$($_.Extension)"}
+
+## Rename artifact to Artifcat /i\
+Rename-Item -Path "artifacts" -NewName "temporary" -force
+Rename-Item -Path "temporary" -NewName "Artifacts" -force
+## :'( 
+
 Import-AzBlueprintWithArtifact -Name $blueprintName -SubscriptionId $subscriptionId -InputPath $blueprintPath -Force
