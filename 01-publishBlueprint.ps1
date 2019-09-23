@@ -7,19 +7,18 @@ param(
     [string]$tenantId = $env:TENANTID
 )
 
-Install-Module -Name Az.Blueprint -AllowClobber -Force
-
-if (!(Get-Module -ListAvailable -Name Az.Blueprint)) {
-    throw "Module does not exist"
-    exit 1 
-} 
-
 write-output "Subscription : $subscriptionId"
 $securePass = ConvertTo-SecureString $spnPass -AsPlainText -Force
 $credential = New-Object -TypeName pscredential -ArgumentList $spnId, $securePass
 Login-AzAccount -Credential $credential -ServicePrincipal -TenantId $tenantId
 
-$text = [System.Threading.Thread]::CurrentThread.CurrentCulture.TextInfo
-gci "$blueprintPath/blueprint.json" | Rename-Item -NewName {"$($text.ToTitleCase($_.BaseName.ToLower()))$($_.Extension)"}
+$createdBlueprint = Get-AzBlueprint -SubscriptionId $subscriptionId -Name $blueprintName -errorAction SilentlyContinue
 
-Import-AzBlueprintWithArtifact -Name $blueprintName -SubscriptionId $subscriptionId -InputPath $blueprintPath -Force
+if($createdBlueprint)
+{
+    Publish-AzBlueprint -Blueprint $createdBlueprint -Version "1.0.0"
+}else
+{
+    throw "Could not get Blueprint"
+    exit 1
+}
