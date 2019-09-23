@@ -23,8 +23,8 @@ $text = [System.Threading.Thread]::CurrentThread.CurrentCulture.TextInfo
 gci "$blueprintPath/blueprint.json" | Rename-Item -NewName {"$($text.ToTitleCase($_.BaseName.ToLower()))$($_.Extension)"}
 
 ## Rename artifact to Artifcat /i\
-Rename-Item -Path "artifacts" -NewName "temporary" -force
-Rename-Item -Path "temporary" -NewName "Artifacts" -force
+Rename-Item -Path "$blueprintPath/artifacts" -NewName "$blueprintPath/temporary" -force
+Rename-Item -Path "$blueprintPath/temporary" -NewName "$blueprintPath/Artifacts" -force
 ## :'( 
 
 Import-AzBlueprintWithArtifact -Name $blueprintName -SubscriptionId $subscriptionId -InputPath $blueprintPath -Force
