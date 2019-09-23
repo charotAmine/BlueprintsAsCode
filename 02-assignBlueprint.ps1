@@ -23,6 +23,7 @@ $createdBlueprint = Get-AzBlueprint -SubscriptionId $subscriptionId -Name $bluep
 
 if($createdBlueprint)
 {
+        (Get-Content $assignmentFile).replace("{{BLUEPRINTID}}",$createdBlueprint.id) | Set-Content $assignmentFile
         New-AzBlueprintAssignment -Name "assigned-$blueprintName" -Blueprint $createdBlueprint -AssignmentFile $assignmentFile -SubscriptionId $subscriptionId 
 }else
 {

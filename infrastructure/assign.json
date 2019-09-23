@@ -4,7 +4,7 @@
     },
     "location": "westeurope",
     "properties": {
-        "blueprintId": "",
+        "blueprintId": "{{BLUEPRINTID}}",
         "resourceGroups": {
             "apimRG": {
                 "name": "artsbxwe-apim-rg",
