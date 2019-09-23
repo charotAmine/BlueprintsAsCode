@@ -17,13 +17,7 @@ $createdBlueprint = Get-AzBlueprint -SubscriptionId $subscriptionId -Name $bluep
 
 if($createdBlueprint)
 {
-    if($createdBlueprint.versions -eq $version)
-    {
-        Set-AzBlueprintAssignment -Name "assigned-$blueprintName" -Blueprint $createdBlueprint -AssignmentFile $assignmentFile -SubscriptionId $subscriptionId 
-    }else
-    {
         New-AzBlueprintAssignment -Name "assigned-$blueprintName" -Blueprint $createdBlueprint -AssignmentFile $assignmentFile -SubscriptionId $subscriptionId 
-    }
 }else
 {
     throw "Could not get Blueprint"
