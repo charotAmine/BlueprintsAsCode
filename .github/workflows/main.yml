@@ -7,6 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - name: Azure - Login
+      uses: Azure/github-actions/login@master
+      env:
+        AZURE_SERVICE_APP_ID: ${ { secrets.AZURE_SERVICE_APP_ID } }
+        AZURE_SERVICE_PASSWORD: ${ { secrets.spnPass } }
+        AZURE_SERVICE_TENANT: ${ { secrets.AZURE_SERVICE_TENANT } }
+        
     - name: Import the blueprint
       env:
         SUBSCRIPTIONID: fa971420-4388-457a-ac56-1cd453785f14
