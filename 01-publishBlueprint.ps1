@@ -1,5 +1,6 @@
 param(
     [string]$subscriptionId = $env:SUBSCRIPTIONID,
+    [string]$mgId = $env:MGID,
     [string]$blueprintPath = $env:BLUEPRINTPATH,
     [string]$blueprintName = $env:BLUEPRINTNAME,
     [string]$spnId = $env:SPNID,
@@ -13,7 +14,7 @@ $securePass = ConvertTo-SecureString $spnPass -AsPlainText -Force
 $credential = New-Object -TypeName pscredential -ArgumentList $spnId, $securePass
 Login-AzAccount -Credential $credential -ServicePrincipal -TenantId $tenantId
 
-$createdBlueprint = Get-AzBlueprint -SubscriptionId $subscriptionId -Name $blueprintName -errorAction SilentlyContinue
+$createdBlueprint = Get-AzBlueprint -ManagementGroupId $mgId -Name $blueprintName -errorAction SilentlyContinue
 
 if($createdBlueprint)
 {

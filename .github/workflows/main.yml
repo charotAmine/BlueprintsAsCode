@@ -7,13 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Azure - Login
-      uses: Azure/github-actions/login@master
-      env:
-        AZURE_SERVICE_APP_ID: ${{ secrets.AZURE_SERVICE_APP_ID }}
-        AZURE_SERVICE_PASSWORD: ${{ secrets.spnPass }}
-        AZURE_SERVICE_TENANT: ${{ secrets.AZURE_SERVICE_TENANT }}
-
     - name: Import the blueprint
       env:
         SUBSCRIPTIONID: fa971420-4388-457a-ac56-1cd453785f14
@@ -22,6 +15,7 @@ jobs:
         SPNID: 529a5a8d-4dc4-4f1a-9d4f-3ba5f130446f
         SPNPASS: ${{ secrets.spnPass }}
         TENANTID: eb73c9bc-7f90-4841-9556-c3a56cc82c79
+        MGID: charotmg
       run: ./00-importBlueprint.ps1
       shell: pwsh
     - name: Publish the blueprint
@@ -32,7 +26,8 @@ jobs:
         SPNID: 529a5a8d-4dc4-4f1a-9d4f-3ba5f130446f
         SPNPASS: ${{ secrets.spnPass }}
         TENANTID: eb73c9bc-7f90-4841-9556-c3a56cc82c79
-        VERSION: 1.0.0
+        VERSION: 2.0.0
+        MGID: charotmg
       run: ./01-publishBlueprint.ps1
       shell: pwsh
   deploy:
