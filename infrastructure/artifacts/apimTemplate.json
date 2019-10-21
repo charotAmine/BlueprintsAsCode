@@ -63,7 +63,6 @@
       "outputs": {}
     },
     "resourceGroup": "apimRG",
-    "displayName": "APIM Template",
     "parameters":{}
   },
   "type": "Microsoft.Blueprint/blueprints/artifacts",
